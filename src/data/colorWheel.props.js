@@ -1,11 +1,18 @@
 import PropTypes from "prop-types";
 
-import { colorPropTypes, colorDefaultProps } from "./color.props";
+/**
+ * A set of colors constructed from primary colors.
+ */
+
+import {
+  colorModelPropTypes,
+  colorModelDefaultProps,
+} from "./colorModel.props";
 
 const propTypes = {
-  primary: PropTypes.arrayOf(PropTypes.colorPropTypes),
-  secondary: PropTypes.arrayOf(PropTypes.colorPropTypes),
-  tertiary: PropTypes.arrayOf(PropTypes.colorPropTypes),
+  primary: PropTypes.arrayOf(PropTypes.shape(colorPropTypes)),
+  secondary: PropTypes.arrayOf(PropTypes.shape(colorPropTypes)),
+  tertiary: PropTypes.arrayOf(PropTypes.shape(colorPropTypes)),
 };
 
 let defaultProps = {

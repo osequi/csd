@@ -1,5 +1,9 @@
 import PropTypes from "prop-types";
 
+/**
+ * The definition of a color.
+ */
+
 import {
   colorWheelPropTypes,
   colorWheelDefaultProps,
@@ -13,7 +17,7 @@ const propTypes = {
    * @type {object}
    */
   hue: PropTypes.oneOf([
-    ...colorPropTypes.primary,
+    ...colorWheelPropTypes.primary,
     ...colorWheelPropTypes.secondary,
   ]),
   /**
@@ -44,7 +48,7 @@ const propTypes = {
 const defaultProps = {
   name: "Light green",
   hue: "green",
-  tint: 0,
+  tint: 10,
   tone: 0,
   shade: 0,
 };

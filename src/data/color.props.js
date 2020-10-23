@@ -4,22 +4,19 @@ import PropTypes from "prop-types";
  * The definition of a color.
  */
 
-import {
-  colorWheelPropTypes,
-  colorWheelDefaultProps,
-} from "./colorWheel.props";
-
 const propTypes = {
+  /**
+   * The name of the color.
+   * @type {string}
+   */
   name: PropTypes.string,
   /**
-   * The origin of a color.
+   * The origin of the color.
+   * Every color is coming either from the primary or secondary colors.
    * @see https://color-wheel-artist.com/hue/
-   * @type {object}
+   * @type {string}
    */
-  hue: PropTypes.oneOf([
-    ...colorWheelPropTypes.primary,
-    ...colorWheelPropTypes.secondary,
-  ]),
+  hue: PropTypes.string,
   /**
    * How much white the color contains, in percentage.
    * Lightens the color.
@@ -46,8 +43,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-  name: "Light green",
-  hue: "green",
+  name: "Light Green",
+  hue: "Green",
   tint: 10,
   tone: 0,
   shade: 0,

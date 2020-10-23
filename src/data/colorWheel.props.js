@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 /**
- * A set of colors constructed from primary colors.
+ * A set of colors constructed from primary colors of a color model.
  */
 
 import {
@@ -9,31 +9,25 @@ import {
   colorModelDefaultProps,
 } from "./colorModel.props";
 
+import { colorPropTypes, colorDefaultProps } from "./color.props";
+
 const propTypes = {
-  primary: PropTypes.arrayOf(PropTypes.shape(colorPropTypes)),
+  primary: PropTypes.shape(colorModelPropTypes.primaryColors),
   secondary: PropTypes.arrayOf(PropTypes.shape(colorPropTypes)),
   tertiary: PropTypes.arrayOf(PropTypes.shape(colorPropTypes)),
 };
 
 let defaultProps = {
-  primary: [
-    {
-      name: "red",
-    },
-    {
-      name: "green",
-    },
-    {
-      name: "blue",
-    },
-  ],
+  primary: colorModelDefaultProps.primary,
 };
 
 const generateSecondary = (props) => {};
 const generateTertiary = (props) => {};
 
-defaultProps.secondary = generateSecondary(defaultProps);
-colorDefaultProps.tertiary = generateTertiary(defaultProps);
+defaultProps = {
+  secondary: generateSecondary(defaultProps.primary),
+  tertiary: generateTertiary(defaultProps.primary),
+};
 
 export {
   propTypes as colorWheelPropTypes,

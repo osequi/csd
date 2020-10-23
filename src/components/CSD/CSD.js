@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
 import { useStyles } from "../../hooks";
@@ -6,7 +6,8 @@ import { useStyles } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
-import ColorModels from "../ColorModels";
+import ColorModels, { ColorModelsDefaultProps } from "../ColorModels";
+import ColorSpaces, { ColorSpacesDefaultProps } from "../ColorSpaces";
 
 /**
  * Defines the prop types.
@@ -32,9 +33,27 @@ const container = {
 const CSD = (props) => {
   const { containerKlass } = useStyles([container], props);
 
+  const [model, setModel] = useState(ColorModelsDefaultProps.models[0].name);
+  const [space, setSpace] = useState(ColorSpacesDefaultProps.spaces[0].name);
+
+  const handleModelChange = (event) => {
+    setModel(event.target.value);
+  };
+
+  const handleSpaceChange = (event) => {
+    setSpace(event.target.value);
+  };
+
   return (
     <div className={cx("CSD", containerKlass)}>
-      <ColorModels />
+      <ColorModels
+        selected={model}
+        handleModelChange={() => handleModelChange}
+      />
+      <ColorSpaces
+        selected={space}
+        handleSpaceChange={() => handleSpaceChange}
+      />
     </div>
   );
 };

@@ -19,6 +19,8 @@ import {
  */
 const propTypes = {
   models: PropTypes.arrayOf(PropTypes.shape(colorModelPropTypes)),
+  selected: PropTypes.string,
+  handleModelChange: PropTypes.func,
 };
 
 /**
@@ -26,6 +28,10 @@ const propTypes = {
  */
 const defaultProps = {
   models: [CMY, RGB, RYB],
+  selected: "CMY",
+  handleModelChange: () => {
+    console.log("Model change");
+  },
 };
 
 /**
@@ -40,7 +46,7 @@ const container = {
  * @see ColorModels.md
  */
 const ColorModels = (props) => {
-  const { models } = props;
+  const { models, selected, handleModelChange } = props;
   const { containerKlass } = useStyles([container], props);
 
   const modelsList =
@@ -57,7 +63,13 @@ const ColorModels = (props) => {
   return (
     <div className={cx("ColorModels", containerKlass)}>
       <label>Model</label>
-      <select name="ColorModels">{modelsList}</select>
+      <select
+        name="ColorModels"
+        value={selected}
+        onChange={handleModelChange()}
+      >
+        {modelsList}
+      </select>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { useStyles } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
+import { Cell } from "../layout";
 
 /**
  * Defines the prop types.
@@ -37,7 +38,7 @@ const ColorSwatch = (props) => {
   const { children } = props;
   const { containerKlass } = useStyles([container], props);
 
-  return <div className={cx("ColorSwatch", containerKlass)}>{children}</div>;
+  return <Cell className={cx("ColorSwatch", containerKlass)}>{children}</Cell>;
 };
 
 ColorSwatch.propTypes = propTypes;

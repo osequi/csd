@@ -8,7 +8,7 @@ import { useStyles } from "../../hooks";
  */
 import ColorModels, { ColorModelsDefaultProps } from "../ColorModels";
 import ColorSpaces, { ColorSpacesDefaultProps } from "../ColorSpaces";
-import ColorWheel from "../ColorWheel";
+import Hues from "../Hues";
 
 /**
  * Defines the prop types.
@@ -55,7 +55,7 @@ const CSD = (props) => {
         selected={space}
         handleSpaceChange={() => handleSpaceChange}
       />
-      <ColorWheel modelName={model} space={space} />
+      <Hues modelName={model} space={space} />
     </div>
   );
 };
